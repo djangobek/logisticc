@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-jf@88(j@n6up^a@-o9!+6rq$6idknko1@%5*w(wka=d0_t_mi*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['murodttlogistic.com']
 
 
 # Application definition
@@ -35,14 +35,12 @@ INSTALLED_APPS = [
     'jazzmin',
     'django_resized',
     'parler',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'home',
 ]
 
