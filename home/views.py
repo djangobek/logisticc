@@ -12,16 +12,8 @@ from .models import Partner, ContactUs, Order, Blog, TruckType
 #         language = request.POST.get('language')
 #         activate(language)
 #         request.session[settings.LANGUAGE_CODE] = language
-#         # print(language)
 #         return redirect('home')
 
-# def lang(request):
-#     if request.method == 'POST':
-#         language = request.POST.get('language')
-#         activate(language)
-#         response = HttpResponseRedirect('home')
-#         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
-#         return response
 
 def lang(request):
     if request.method == 'POST':
