@@ -8,6 +8,6 @@ urlpatterns = [
     path('order/', order, name='order'),
 
     re_path(r'^set_language/$', set_language, name='set_language'),
-    path('/lang/', lang, name='lang'),
+    path('lang/', lang, name='lang'),
 ]
 
