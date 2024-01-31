@@ -1,18 +1,39 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.utils.translation import activate, get_language, gettext
 from django.utils import translation
 from .models import Partner, ContactUs, Order, Blog, TruckType
 
-# Create your views here.
+
+
+# def lang(request):
+#     if 'POST' == request.method:
+#         language = request.POST.get('language')
+#         activate(language)
+#         request.session[settings.LANGUAGE_CODE] = language
+#         # print(language)
+#         return redirect('home')
+
+# def lang(request):
+#     if request.method == 'POST':
+#         language = request.POST.get('language')
+#         activate(language)
+#         response = HttpResponseRedirect('home')
+#         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
+#         return response
 
 def lang(request):
-    if 'POST' == request.method:
+    if request.method == 'POST':
         language = request.POST.get('language')
         activate(language)
-        request.session[settings.LANGUAGE_CODE] = language
-        # print(language)
-        return redirect('home')
+
+        response = redirect('home')
+
+        # Set language information in a cookie
+        response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
+
+        return response
 
 
 def home(request):
@@ -49,7 +70,8 @@ def order(request):
         truck_type = request.POST.get('truck_type')
         truck_type = get_object_or_404(TruckType, id=truck_type)
 
-        Order.objects.create(from_where=from_where,phone=phone , email=email ,to_where=to_where, weight=weight, when=when, truck_type=truck_type)
+        Order.objects.create(from_where=from_where, phone=phone, email=email, to_where=to_where, weight=weight,
+                             when=when, truck_type=truck_type)
 
         return redirect('home')
 
